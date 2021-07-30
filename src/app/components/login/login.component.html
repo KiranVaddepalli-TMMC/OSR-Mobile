@@ -1,0 +1,46 @@
+
+
+      <div class="col-1-1" *ngIf="errorMsg"><label class="errorLabel">{{errorMsg}}</label></div>
+    
+
+      <div *ngIf="nameFlag" class="form-group">
+         <label>UserName:</label> 
+         <div class="form-input">
+         <input id="input" type="text" size="20" [value] ="user.loginId"><br/>
+          <p-button *ngIf="user.loginId; then inputSelected();"></p-button>
+        </div>
+      </div>
+      <div *ngIf="!nameFlag"  class="form-group">
+        <label>Password:</label> 
+        <div class="form-input">
+          <input id="input" type="password" size="20" [value]="user.password"> 
+          </div>
+      </div>
+   
+      <div class="btn-section">
+
+          <button pButton type="button" class="returnButton"  (click)='cancel()' >
+            <span class="material-icons">clear</span>
+          </button>
+          <button pButton type="button" class="switchButton"   (click)='switchPads()' >{{switchStr}}</button>
+          <button pButton *ngIf="nameFlag" type="button" class="nextButton"  [disabled]="noneSelectedFlag"	(click)='moveNext()'>
+            <span class="material-icons">forward</span>
+          </button>
+          <button pButton *ngIf="!nameFlag" type="button"  class="nextButton" (click)="login()" >Login</button>
+          <button pButton type="button" class="returnButton"  [disabled]="noneSelectedFlag"	(click)='backSpace()'>
+              <span class="material-icons">undo</span>
+          </button> 
+              
+      </div>
+    
+      <div *ngIf="numPadFlag" class="keypad-section">
+      <div   class="keypad-btn" *ngFor="let numpad of numList">
+          <button pButton type="button" class='numPadButton'  (click)='onNumPad(numpad)' >{{numpad}}</button>
+      </div>
+      </div>
+      
+      <div *ngIf="!numPadFlag" class="keypad-section">
+      <div  class="keypad-btn" *ngFor="let alphapad of alphaList">
+          <button pButton type="button" class='alphaPadButton'  (click)='onAlphaPad(alphapad)' >{{alphapad}}</button>
+      </div>
+      </div>

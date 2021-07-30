@@ -1,0 +1,107 @@
+<div class="Home">
+    <div class="ContainerScreen">
+        <ng-container *ngIf="!showStartScan && !showManualScan && !selectedContainer && openContainerList.length">
+            <ng-container *ngFor="let each of openContainerList">
+                <div class="Button Buttonlist" (click)="onContainerSelect(each)"> {{each}} </div>
+            </ng-container>
+        </ng-container>
+        
+        <ng-container *ngIf="welcomeDetails &&  openContainerList.length == 0 && !showComplete">
+            <div class="sub-heading">No open or active containers. Please activate or open a container..</div>
+            </ng-container>
+            <ng-container *ngIf="showComplete">
+                <div class="sub-heading"> Please click Home button to continue scanning lifts with other active containers</div>
+                </ng-container>
+           
+        <ng-container *ngIf="selectedContainer && !showStartScan && !showManualScan">
+            <ng-container *ngIf="welcomeDetails?.statusDesc == 'completeContainer'">
+                <div class="sub-heading">Container 100% filled.</div>
+
+                <div class="Button Buttonlist" (click)="completeContainer()">
+                    Complete Container
+                </div>
+            </ng-container>
+            <ng-container *ngIf="welcomeDetails?.statusDesc != 'completeContainer'">
+                <ng-container *ngIf="activeStatus">
+                    <div class="heading">{{welcomeDetails.headerStatus}}</div>
+
+                </ng-container>
+                <ng-container *ngIf="!activeStatus">
+
+                    <div class="heading"> Active container found</div>
+                    <div class="heading"> Vanning center: {{welcomeDetails.currentDestination}}</div>
+                    <div class="heading"> {{welcomeDetails.dunnageContainer.containerNum}}</div>
+
+
+                    <div class="sub-heading">Carrier: {{welcomeDetails.dunnageContainer.carrier}}</div>
+                    <div class="sub-heading">Lift status: ({{welcomeDetails.liftCount}}/10)</div>
+                </ng-container>
+                <ng-container *ngFor="let each of welcomeDetails?.errorMesages">
+                    <span class="error-message">{{each.message}}</span>
+                </ng-container>
+                <div class="Button Buttonlist" (click)="StartScan()">
+                    Start Scan
+                </div>
+                <ng-container *ngFor="let each of listErrorMessages">
+                    <span class="error-message">{{each.message}}</span>
+                </ng-container>
+
+                <ng-container *ngFor="let each of welcomeDetails?.liftList">
+                    <p *ngIf="each.uploadedBy">
+                        Lift {{each.liftNumber}} : {{each.liftScans}} Uploaded
+                    </p>
+                    <ng-container *ngIf="!each.uploadedBy">
+                        <div class="Button Buttonlist" (click)="onLiftCheck(each)">
+                            Lift {{each.liftNumber}} : {{each.liftScans}} {{each.validated == "W" ? "Wait for TL" :
+                            "Ready to Load"}}
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="showStartScan">
+            <div class="heading" *ngIf="welcomeDetails?.headerStatus">
+                {{ welcomeDetails?.headerStatus}}
+            </div>
+            <div class="heading" *ngIf="!welcomeDetails?.headerStatus">
+                {{welcomeDetails?.dunnageContainer.containerNum}}
+                ({{welcomeDetails.liftCount}}/10)
+            </div>
+            <div class="sub-heading">Start Scanning</div>
+
+
+            <div class="Button Buttonlist disabled">
+                Validate Scans
+            </div>
+            <div class="Button Buttonlist" (click)="StartManualScan()">
+                Enter Manually
+            </div>
+        </ng-container>
+        <ng-container *ngIf="showManualScan">
+            <div class="heading" *ngIf="welcomeDetails?.headerStatus">
+                {{ welcomeDetails?.headerStatus}}
+            </div>
+            <div class="heading" *ngIf="!welcomeDetails?.headerStatus">
+                {{welcomeDetails?.dunnageContainer.containerNum}}
+                ({{welcomeDetails.liftCount}}/10)
+            </div>
+            <div class="sub-heading">Add/ Remove Scans</div>
+            <ng-container *ngFor="let each of manualScanList;let i =index">
+                <div class="form-input">
+                    <input type="text" (change)="onInputChange($event,i)" [value]="each.name">
+                </div>
+            </ng-container>
+            <div class="Button Buttonlist" (click)="addScanToList()">
+                Add Scans
+            </div>
+            <div class="Button Buttonlist" [class.disabled]="manualScanList.length == 1" (click)="removeScanToList()">
+                Remove Scans
+            </div>
+            <div class="Button Buttonlist" (click)="validateScan()">
+                Validate Scans
+            </div>
+            <span class="error-message" *ngIf="errorMessage">{{errorMessage}}</span>
+        </ng-container>
+    </div>
+</div>

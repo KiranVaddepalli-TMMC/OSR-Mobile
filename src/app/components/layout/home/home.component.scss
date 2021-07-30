@@ -1,0 +1,172 @@
+.Home {
+  // height: calc(100vh - 140px);
+  // position: relative;
+  // width: 100%;
+  display: flex;
+  // overflow: auto;
+  background-color: #e3e3e3;
+  flex-direction: column;
+  margin-bottom: 30px;
+  .HomeScreen {
+    color: #313335;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .heading {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .Containerno {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .ContainerDetails {
+      padding: 5px 10px 10px;
+
+      .item {
+        font-size: 20px;
+      }
+    }
+
+    .StartScan {
+      background-color: #f4f4f4;
+      box-shadow: 0 1px 6px 0 rgb(64 64 64 / 50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+
+  .ContainerScreen {
+    text-align: center;
+    color: #313335;
+    padding: 30px;
+
+    .heading {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .sub-heading {
+      font-size: 16px;
+      display: flex;
+      padding: 10px 0;
+    }
+
+    .Button {
+      background-color: #f4f4f4;
+      box-shadow: 0 1px 6px 0 rgb(64 64 64 / 50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 22px;
+      cursor: pointer;
+      &.disabled{
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    .StartScan {
+      margin: 15px 0 50px;
+    }
+
+    .Buttonlist {
+      margin: 15px 0;
+
+    }
+  }
+
+  .Login {
+    color: #313335;
+    padding: 30px;
+
+    .form-group {
+      margin-bottom: 10px;
+
+      input {
+        font-size: 18px;
+      }
+    }
+
+    .Button {
+      background-color: #f4f4f4;
+      box-shadow: 0 1px 6px 0 rgb(64 64 64 / 50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 22px;
+      cursor: pointer;
+      margin: 40px 0 0;
+    }
+  }
+
+  .AddScan {
+    text-align: center;
+    color: #313335;
+    padding: 30px;
+
+    .heading {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .headline {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: left;
+      margin: 10px;
+
+      span {
+        color: red;
+        font-weight: normal;
+      }
+    }
+
+    .FormFields {
+      max-width: 850px;
+
+      .form-group {
+        margin-bottom: 10px;
+
+        input {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .Button {
+      background-color: #f4f4f4;
+      box-shadow: 0 1px 6px 0 rgb(64 64 64 / 50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+
+    .Buttonlist {
+      margin: 15px 0;
+    }
+  }
+}

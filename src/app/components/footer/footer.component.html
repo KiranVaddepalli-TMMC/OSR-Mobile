@@ -1,0 +1,11 @@
+<div class="Footer">
+    <div class="user-sec"  *ngIf="loginId">
+        <span>Logged in as: {{loginId}}</span>
+        <div class="footer-button" [routerLink]="['/home']" [queryParams]="{status:true}">
+            Container Status
+        </div>
+    </div>
+    <div class="copyright-sec">
+    OSR version <span class="versionInfo"> {{versionNumber}}</span>, TMMC Canada Inc. &copy;
+</div>
+</div>

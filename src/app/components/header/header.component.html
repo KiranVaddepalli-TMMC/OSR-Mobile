@@ -1,0 +1,13 @@
+<div class="Header"  [class.space-center]="!userLoggedIn">
+    <div class="home" *ngIf="userLoggedIn" (click)="onHomeClick()">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </div>
+    <div class="Heading">
+        OSR
+    </div>
+    <div class="signout" *ngIf="userLoggedIn" (click)="logout()">
+        <i class="fas fa-star"></i>
+        <span>Sign out</span>
+    </div>
+</div>
